@@ -47,9 +47,7 @@ proto.attrs = {
   circular: {
     get: function() { this.getAttribute('circular'); },
     set: function(value) {
-      console.log(value);
       value = !!(value === '' || value);
-
       if (value) {
         this.setAttribute('circular', '');
         this.els.inner.setAttribute('circular', '');
@@ -63,9 +61,7 @@ proto.attrs = {
   disabled: {
     get: function() { this.getAttribute('disabled'); },
     set: function(value) {
-      console.log(value);
       value = !!(value === '' || value);
-
       if (value) {
         this.setAttribute('disabled', '');
         this.els.inner.setAttribute('disabled', '');
