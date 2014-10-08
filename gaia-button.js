@@ -93,6 +93,7 @@ var template = `
   border-radius: 50px;
   overflow: hidden;
   cursor: pointer;
+  -moz-user-select: none;
 
   background:
     var(--button-background,
