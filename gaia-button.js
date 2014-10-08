@@ -94,6 +94,7 @@ var template = `
   overflow: hidden;
   cursor: pointer;
   -moz-user-select: none;
+  line-height: 1;
 
   background:
     var(--button-background,
@@ -167,6 +168,10 @@ var template = `
   transition: opacity 500ms;
 }
 
+i:before {
+  font-size: 26px;
+}
+
 /** Content
  ---------------------------------------------------------*/
 
@@ -178,14 +183,15 @@ var template = `
  */
 
 .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 2;
-  padding: 0 25px;
+  height: 100%;
+  padding: 0 22px;
   font-style: italic;
   font-size: 17px;
-  text-align: center;
-  line-height: 50px;
-  text-align: center;
   pointer-events: none; /* 1 */
 }
 
