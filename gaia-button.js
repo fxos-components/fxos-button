@@ -164,7 +164,7 @@ var template = `
 }
 
 .released .background {
-  transition: opacity 200ms;
+  transition: opacity 500ms;
 }
 
 /** Content
