@@ -79,7 +79,7 @@ var template = `
 
 @media(min-width:600px) {
   .-host {
-    min-width: 0;
+    min-width: 120px;
   }
 }
 
@@ -179,13 +179,17 @@ i:before {
   font-size: 26px;
 }
 
-.-content i + * {
+.-content i {
+  margin-left: -2px;
+  margin-right: -2px;
+}
+
+.-content i + span,
+.-content span + i {
   margin-left: 8px;
 }
 
-.-content i:first-child {
-  margin-left: -2px;
-}
+
 
 /** Content
  ---------------------------------------------------------*/
