@@ -3,12 +3,6 @@
 'use strict';
 
 /**
- * Dependencies
- */
-
-var pressed = require('pressed');
-
-/**
  * Prototype extends from
  * the HTMLElement.
  *
@@ -27,8 +21,6 @@ proto.createdCallback = function() {
   this.disabled = this.hasAttribute('disabled');
   this.setAttribute('role', 'button');
   this.tabIndex = 0;
-
-  pressed(this.shadowRoot);
   this.styleHack();
 };
 
@@ -95,6 +87,7 @@ var template = `
   cursor: pointer;
   -moz-user-select: none;
   line-height: 1;
+  transition: color 0ms 300ms;
 
   background:
     var(--button-background,
@@ -136,7 +129,8 @@ var template = `
  * .pressed
  */
 
-.inner.pressed {
+.inner:active {
+  transition: none;
   color: var(--button-color-active, #fff);
   box-shadow: var(--button-box-shadow-active, none);
 }
@@ -154,13 +148,16 @@ var template = `
   height: 100%;
   opacity: 0;
 
+  transition: opacity 500ms 200ms;
+
   background:
     var(--button-background-active,
     var(--highlight-color,
     #333));
 }
 
-.pressed .background {
+:active .background {
+  transition: none;
   opacity: 1;
 }
 
