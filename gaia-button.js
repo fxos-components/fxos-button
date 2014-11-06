@@ -73,7 +73,19 @@ var template = `
 .-host {
   display: inline-block;
   box-sizing: border-box;
+  min-width: 50%;
   outline: 0;
+}
+
+@media(min-width:600px) {
+  .-host {
+    min-width: 0;
+  }
+}
+
+.-host[circular] {
+  width: 50px;
+  min-width: 0;
 }
 
 /** Inner
@@ -111,8 +123,6 @@ var template = `
  */
 
 .inner[circular] {
-  width: 50px;
-  height: 50px;
   border-radius: 50%;
 }
 
