@@ -6,10 +6,21 @@
   <meta name="description" content="gaia-text-input demo" />
   <script src="../gaia-button.js"></script>
   <link rel="stylesheet" type="text/css" href="../bower_components/gaia-theme/gaia-theme.css">
+  <style>
+
+  html {
+    font: 16px sans-serif;
+  }
+
+  #result {
+    float: right;
+  }
+  </style>
 </head>
 <body role="application" class="theme-settings">
 <input id="input" value="100"/>
 <button id="run">Run</button>
+<div id="result"></div>
 <hr/>
 <div id="container"></div>
 
@@ -25,7 +36,7 @@ run.onclick = function() {
     container.insertAdjacentHTML('beforeend', '<gaia-button>button ' + i + '</gaia-button>');
   }
 
-  console.log((performance.now() - start) + 'ms');
+  result.textContent = (performance.now() - start) + 'ms';
 };
 
 </script>
