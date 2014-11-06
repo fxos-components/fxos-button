@@ -179,6 +179,14 @@ i:before {
   font-size: 26px;
 }
 
+.-content i + * {
+  margin-left: 8px;
+}
+
+.-content i:first-child {
+  margin-left: -2px;
+}
+
 /** Content
  ---------------------------------------------------------*/
 
@@ -196,7 +204,7 @@ i:before {
   position: relative;
   z-index: 2;
   height: 100%;
-  padding: 0 22px;
+  padding: 0 18px;
   font-style: italic;
   font-size: 17px;
   pointer-events: none; /* 1 */
