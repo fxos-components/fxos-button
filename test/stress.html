@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>&lt;gaia-button&gt;</title>
+  <meta name="description" content="gaia-text-input demo" />
+  <script src="../gaia-button.js"></script>
+  <link rel="stylesheet" type="text/css" href="../bower_components/gaia-theme/gaia-theme.css">
+</head>
+<body role="application" class="theme-settings">
+<input id="input" value="100"/>
+<button id="run">Run</button>
+<hr/>
+<div id="container"></div>
+
+<script>
+
+run.onclick = function() {
+  container.innerHTML = '';
+
+  var start = performance.now();
+  var count = Number(input.value);
+
+  for (var i = 0; i < count; i++) {
+    container.insertAdjacentHTML('beforeend', '<gaia-button>button ' + i + '</gaia-button>');
+  }
+
+  console.log((performance.now() - start) + 'ms');
+};
+
+</script>
+</body>
+</html>
