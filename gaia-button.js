@@ -74,6 +74,7 @@ var template = `
   display: inline-block;
   box-sizing: border-box;
   min-width: 50%;
+  margin: 0 var(--base-m, 18px) var(--base-m, 18px);
   outline: 0;
 }
 
