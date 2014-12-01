@@ -185,7 +185,7 @@ i:before {
 
 .-content i + span,
 .-content span + i {
-  margin-left: 8px;
+  -moz-margin-start: 8px;
 }
 
 
