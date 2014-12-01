@@ -78,10 +78,8 @@ var template = `
   outline: 0;
 }
 
-@media(min-width:600px) {
-  .-host {
-    min-width: 120px;
-  }
+@media(min-width:500px) {
+  .-host { min-width: 140px; }
 }
 
 .-host[circular] {
