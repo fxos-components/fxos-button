@@ -3,227 +3,217 @@
 'use strict';
 
 /**
- * Prototype extends from
- * the HTMLElement.
- *
- * @type {Object}
+ * Dependencies
  */
-var proto = Object.create(HTMLButtonElement.prototype);
 
-proto.createdCallback = function() {
-  this.createShadowRoot().innerHTML = template;
-  this.els = {
-    inner: this.shadowRoot.querySelector('.inner'),
-    content: this.shadowRoot.querySelector('.content')
-  };
+var component = require('gaia-component');
 
-  this.circular = this.hasAttribute('circular');
-  this.disabled = this.hasAttribute('disabled');
-  this.setAttribute('role', 'button');
-  this.tabIndex = 0;
-  this.styleHack();
-};
+/**
+ * Exports
+ */
 
-proto.attributeChangedCallback = function(attr, from, to) {
-  if (this.attrs[attr]) { this[attr] = to; }
-};
+module.exports = component.register('gaia-button', {
+  created: function() {
+    this.setupShadowRoot();
 
-proto.styleHack = function() {
-  var style = this.shadowRoot.querySelector('style').cloneNode(true);
-  this.classList.add('-host', '-content');
-  style.setAttribute('scoped', '');
-  this.appendChild(style);
-};
+    this.els = {
+      inner: this.shadowRoot.querySelector('.inner'),
+      content: this.shadowRoot.querySelector('.content')
+    };
 
-proto.attrs = {
-  circular: {
-    get: function() { this.getAttribute('circular'); },
-    set: function(value) {
-      value = !!(value === '' || value);
-      if (value) {
-        this.setAttribute('circular', '');
-        this.els.inner.setAttribute('circular', '');
-      } else {
-        this.removeAttribute('circular');
-        this.els.inner.removeAttribute('circular');
+    this.circular = this.hasAttribute('circular');
+    this.disabled = this.hasAttribute('disabled');
+    this.setAttribute('role', 'button');
+    this.tabIndex = 0;
+  },
+
+  attrs: {
+    circular: {
+      get: function() { this.getAttribute('circular'); },
+      set: function(value) {
+        value = !!(value === '' || value);
+        if (value) {
+          this.setAttribute('circular', '');
+          this.els.inner.setAttribute('circular', '');
+        } else {
+          this.removeAttribute('circular');
+          this.els.inner.removeAttribute('circular');
+        }
+      }
+    },
+
+    disabled: {
+      get: function() { this.getAttribute('disabled'); },
+      set: function(value) {
+        value = !!(value === '' || value);
+        if (value) {
+          this.setAttribute('disabled', '');
+          this.els.inner.setAttribute('disabled', '');
+        } else {
+          this.removeAttribute('disabled');
+          this.els.inner.removeAttribute('disabled');
+        }
       }
     }
   },
 
-  disabled: {
-    get: function() { this.getAttribute('disabled'); },
-    set: function(value) {
-      value = !!(value === '' || value);
-      if (value) {
-        this.setAttribute('disabled', '');
-        this.els.inner.setAttribute('disabled', '');
-      } else {
-        this.removeAttribute('disabled');
-        this.els.inner.removeAttribute('disabled');
-      }
+  template: `
+    <div class="inner">
+      <div class="background"></div>
+      <div class="content"><content></content></div>
+    </div>
+
+    <style>
+
+    :host {
+      display: block;
+      box-sizing: border-box;
+      min-width: 50%;
+      margin: var(--base-m, 18px);
+      outline: 0;
     }
-  }
-};
 
-Object.defineProperties(proto, proto.attrs);
+    @media(min-width:500px) {
+      :host { min-width: 140px; }
+    }
 
-var template = `
-<style>
+    :host([circular]) {
+      width: 50px;
+      min-width: 0;
+    }
 
-.-host {
-  display: inline-block;
-  box-sizing: border-box;
-  min-width: 50%;
-  margin: 0 var(--base-m, 18px) var(--base-m, 18px);
-  outline: 0;
-}
+    /** Inner
+     ---------------------------------------------------------*/
 
-@media(min-width:500px) {
-  .-host { min-width: 140px; }
-}
+    .inner {
+      position: relative;
+      height: 50px;
+      border-radius: 50px;
+      overflow: hidden;
+      cursor: pointer;
+      -moz-user-select: none;
+      line-height: 1;
+      transition: color 0ms 300ms;
 
-.-host[circular] {
-  width: 50px;
-  min-width: 0;
-}
+      background:
+        var(--button-background,
+        var(--input-background,
+        var(--background-plus,
+        #fff)));
 
-/** Inner
- ---------------------------------------------------------*/
+      color:
+        var(--button-color,
+        var(--text-color,
+        inherit));
 
-.inner {
-  position: relative;
-  height: 50px;
-  border-radius: 50px;
-  overflow: hidden;
-  cursor: pointer;
-  -moz-user-select: none;
-  line-height: 1;
-  transition: color 0ms 300ms;
+      box-shadow:
+        var(--button-box-shadow,
+        var(--box-shadow,
+        none));
+    }
 
-  background:
-    var(--button-background,
-    var(--input-background,
-    var(--background-plus,
-    #fff)));
+    /**
+     * [circular]
+     */
 
-  color:
-    var(--button-color,
-    var(--text-color,
-    inherit));
+    .inner[circular] {
+      border-radius: 50%;
+    }
 
-  box-shadow:
-    var(--button-box-shadow,
-    var(--box-shadow,
-    none));
-}
+    /**
+     * [disabled]
+     */
 
-/**
- * [circular]
- */
+    .inner[disabled] {
+      pointer-events: none;
+      opacity: 0.5;
+    }
 
-.inner[circular] {
-  border-radius: 50%;
-}
+    /**
+     * .pressed
+     */
 
-/**
- * [disabled]
- */
+    .inner:active {
+      transition: none;
+      color: var(--button-color-active, #fff);
+      box-shadow: var(--button-box-shadow-active, none);
+    }
 
-.inner[disabled] {
-  pointer-events: none;
-  opacity: 0.5;
-}
+    /** Background
+     ---------------------------------------------------------*/
 
-/**
- * .pressed
- */
+    .background {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
 
-.inner:active {
-  transition: none;
-  color: var(--button-color-active, #fff);
-  box-shadow: var(--button-box-shadow-active, none);
-}
+      transition: opacity 500ms 200ms;
 
-/** Background
- ---------------------------------------------------------*/
+      background:
+        var(--button-background-active,
+        var(--highlight-color,
+        #333));
+    }
 
-.background {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
+    :active .background {
+      transition: none;
+      opacity: 1;
+    }
 
-  transition: opacity 500ms 200ms;
+    .released .background {
+      transition: opacity 500ms;
+    }
 
-  background:
-    var(--button-background-active,
-    var(--highlight-color,
-    #333));
-}
+    i:before {
+      font-size: 26px;
+    }
 
-:active .background {
-  transition: none;
-  opacity: 1;
-}
+    ::content i {
+      margin-left: -2px;
+      margin-right: -2px;
+    }
 
-.released .background {
-  transition: opacity 500ms;
-}
-
-i:before {
-  font-size: 26px;
-}
-
-.-content i {
-  margin-left: -2px;
-  margin-right: -2px;
-}
-
-.-content i + span,
-.-content span + i {
-  -moz-margin-start: 8px;
-}
+    ::content i + span,
+    ::content span + i {
+      -moz-margin-start: 8px;
+    }
 
 
 
-/** Content
- ---------------------------------------------------------*/
+    /** Content
+     ---------------------------------------------------------*/
 
-/**
- * 1. In some cases events seems to be getting
- *    swallowed by text-nodes. Ignoring pointer-
- *    events means we can listen on parent nodes
- *    instead.
- */
+    /**
+     * 1. In some cases events seems to be getting
+     *    swallowed by text-nodes. Ignoring pointer-
+     *    events means we can listen on parent nodes
+     *    instead.
+     */
 
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  padding: 0 18px;
-  font-style: italic;
-  font-size: 17px;
-  pointer-events: none; /* 1 */
-}
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 0 18px;
+      font-style: italic;
+      font-size: 17px;
+      pointer-events: none; /* 1 */
+    }
 
-[circular] .content {
-  padding: 0;
-}
+    [circular] .content {
+      padding: 0;
+    }
 
-</style>
-<div class="inner">
-  <div class="background"></div>
-  <div class="content"><content></content></div>
-</div>`;
-
-module.exports = document.registerElement('gaia-button', { prototype: proto });
+    </style>`
+});
 
 });})((function(n,w){return typeof define=='function'&&define.amd?
 define:typeof module=='object'?function(c){c(require,exports,module);}:function(c){
