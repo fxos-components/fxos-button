@@ -21,6 +21,6 @@
     "gaia-theme": "gaia-components/gaia-theme#~0.4.1"
   },
   "dependencies": {
-    "gaia-component": "gaia-components/gaia-component#~0.2.0"
+    "gaia-component": "gaia-components/gaia-component#~0.3.0"
   }
 }
