@@ -87,7 +87,7 @@ module.exports = component.register('gaia-button', {
 
     .inner {
       position: relative;
-      height: 50px;
+      height: var(--button-height, 50px);
       border-radius: 50px;
       overflow: hidden;
       cursor: pointer;
@@ -204,7 +204,7 @@ module.exports = component.register('gaia-button', {
       height: 100%;
       padding: 0 18px;
       font-style: italic;
-      font-size: 17px;
+      font-size: var(--button-font-size, 17px);
       pointer-events: none; /* 1 */
     }
 
