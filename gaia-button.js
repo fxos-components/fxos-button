@@ -85,6 +85,11 @@ module.exports = component.register('gaia-button', {
       min-width: 0;
     }
 
+    :host([disabled]) {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
     /** Inner
      ---------------------------------------------------------*/
 
@@ -121,15 +126,6 @@ module.exports = component.register('gaia-button', {
 
     .inner[circular] {
       border-radius: 50%;
-    }
-
-    /**
-     * [disabled]
-     */
-
-    .inner[disabled] {
-      pointer-events: none;
-      opacity: 0.5;
     }
 
     /**
