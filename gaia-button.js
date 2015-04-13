@@ -70,7 +70,7 @@ module.exports = component.register('gaia-button', {
       box-sizing: border-box;
       height: 50px;
       min-width: 50%;
-      margin: var(--base-m, 18px);
+      margin: var(--base-m, 18px) 0;
       outline: 0;
       font-style: italic;
       font-size: 17px;
