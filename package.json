@@ -1,0 +1,33 @@
+{
+  "name": "gaia-button",
+  "version": "0.0.5",
+  "homepage": "https://github.com/gaia-components/gaia-button",
+  "license": "MIT",
+  "main": "gaia-button.js",
+  "devDependencies": {
+    "babel": "^5.2.12",
+    "bower": "^1.4.1",
+    "browserify": "^10.1.0",
+    "jshint": "^2.7.0"
+  },
+  "scripts": {
+    "install": "bower install",
+    "lint": "./node_modules/jshint/bin/jshint gaia-button.js",
+    "bundle": "mkdir -p dist && browserify gaia-button.js --outfile ./dist/gaia-button.js --standalone GaiaButton",
+    "es5": "mkdir -p dist && babel ./dist/gaia-button.js --out-file ./dist/gaia-button-es5.js",
+    "build": "npm run bundle && npm run es5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gaia-components/gaia-button.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gaia-components/gaia-button/issues"
+  },
+  "browser": {
+    "gaia-component": "./bower_components/gaia-component/gaia-component.js"
+  },
+  "dependencies": {
+    "gaia-component": "git://github.com/gaia-components/gaia-component.git"
+  }
+}
