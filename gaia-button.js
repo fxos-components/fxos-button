@@ -1,6 +1,5 @@
-(function(define){define(function(require,exports,module){
-/*jshint esnext:true*/
-'use strict';
+/* globals define */
+(function(define){'use strict';define(function(require,exports,module){
 
 /**
  * Dependencies
@@ -193,6 +192,7 @@ module.exports = component.register('gaia-button', {
     </style>`
 });
 
-});})((function(n,w){return typeof define=='function'&&define.amd?
-define:typeof module=='object'?function(c){c(require,exports,module);}:function(c){
-var m={exports:{}},r=function(n){return w[n];};w[n]=c(r,m.exports,m)||m.exports;};})('gaia-button',this));
+});})(typeof define=='function'&&define.amd?define
+:(function(n,w){'use strict';return typeof module=='object'?function(c){
+c(require,exports,module);}:function(c){var m={exports:{}};c(function(n){
+return w[n];},m.exports,m);w[n]=m.exports;};})('gaia-button',this));
