@@ -1,4 +1,4 @@
-# &lt;gaia-button&gt; [![devDependency Status](https://david-dm.org/gaia-components/gaia-header/dev-status.svg)](https://david-dm.org/gaia-components/gaia-button#info=devDependencies)
+# &lt;gaia-button&gt; [![](https://travis-ci.org/gaia-components/gaia-button.svg)](https://travis-ci.org/gaia-components/gaia-button) [![devDependency Status](https://david-dm.org/gaia-components/gaia-header/dev-status.svg)](https://david-dm.org/gaia-components/gaia-button#info=devDependencies)
 
 ## Installation
 

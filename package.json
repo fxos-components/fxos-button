@@ -26,8 +26,5 @@
   },
   "browser": {
     "gaia-component": "./bower_components/gaia-component/gaia-component.js"
-  },
-  "dependencies": {
-    "gaia-component": "git://github.com/gaia-components/gaia-component.git"
   }
 }
