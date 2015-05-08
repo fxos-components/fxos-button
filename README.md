@@ -26,11 +26,19 @@ Add `disabled` attribute to disable the button.
 
 ### With icon
 
-Button Can show with icon (need import `gaia-icons`)
+Button Can show with icon (need import `gaia-icons`) at left
 
 ```html
-<gaia-button><i data-icon="back-light"></i><span>Back</span></gaia-button>
+<gaia-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></gaia-button>
 ```
+
+or right
+
+```html
+<gaia-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></gaia-button>
+```
+
+Remember to add `aria-hidden="true"` when both icon and text existed for **Accessibility**. So the screen reader will read the button text and ignore the icon text.
 
 ### Circular
 

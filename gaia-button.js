@@ -12,6 +12,8 @@ var component = require('gaia-component');
  */
 
 module.exports = component.register('gaia-button', {
+  extends: HTMLButtonElement.prototype,
+
   created: function() {
     this.setupShadowRoot();
     this.setAttribute('role', 'button');
