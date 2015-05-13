@@ -22,8 +22,21 @@ module.exports = component.register('gaia-button', {
 
   created: function() {
     this.setupShadowRoot();
+    // process everything that doesn't affect user interaction
+    // after the component is created
+    setTimeout(() => this.makeAccessible());
+  },
+
+  makeAccessible: function() {
     this.setAttribute('role', 'button');
+
+    // Make tabable
     this.tabIndex = 0;
+
+    // let screen reader read the button is disabled
+    if (this.hasAttribute('disabled')) {
+      this.setAttribute('aria-disabled', true);
+    }
   },
 
   attrs: {
@@ -48,8 +61,10 @@ module.exports = component.register('gaia-button', {
         this._disabled = value;
         if (value) {
           this.setAttr('disabled', '');
+          this.setAttribute('aria-disabled', true);
         } else {
           this.removeAttr('disabled');
+          this.removeAttribute('aria-disabled');
         }
       }
     }
@@ -186,18 +201,21 @@ module.exports = component.register('gaia-button', {
       padding: 0;
     }
 
-    i:before {
-      font-size: 26px;
+    ::content [data-icon]:before,
+    ::content [data-icon-end]:after {
+      margin-left: -5px;
+      margin-right: -5px;
+      vertical-align: middle;
+      width: 30px;
     }
 
-    ::content i {
-      margin-left: -2px;
-      margin-right: -2px;
-    }
+    /**
+     * Reverse the icons when the document is RTL mode
+     */
 
-    ::content i + span,
-    ::content span + i {
-      -moz-margin-start: 8px;
+    :host-context([dir=rtl]) ::content [data-icon]:before,
+    :host-context([dir=rtl]) ::content [data-icon-end]:after {
+      transform: scale(-1, 1);
     }
 
     </style>`
