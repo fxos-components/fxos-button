@@ -16,8 +16,30 @@ module.exports = component.register('gaia-button', {
 
   created: function() {
     this.setupShadowRoot();
+    // offload the initiate operation to save loadtime
+    setTimeout(() => {
+      this.makeAccessible();
+    });
+  },
+
+  makeAccessible: function() {
     this.setAttribute('role', 'button');
+
+    // Make tabable
     this.tabIndex = 0;
+
+    // let screen reader read the button is disabled
+    if (this.hasAttribute('disabled')) {
+      this.setAttribute('aria-disabled', true);
+    }
+    // let screen reader read the button text and ignore the icon text
+    // when both icon and text existed
+    if (this.childElementCount > 1 && this.getElementsByTagName('i')) {
+      var items = this.getElementsByTagName('i');
+      for (var i = 0, len = items.length; i < len; i++) {
+        items[i].setAttribute('aria-hidden', true);
+      }
+    }
   },
 
   attrs: {
@@ -39,8 +61,10 @@ module.exports = component.register('gaia-button', {
         value = !!(value === '' || value);
         if (value) {
           this.setAttribute('disabled', '');
+          this.setAttribute('aria-disabled', true);
         } else {
           this.removeAttribute('disabled');
+          this.removeAttribute('aria-disabled');
         }
       }
     }
