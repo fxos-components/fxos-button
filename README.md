@@ -48,6 +48,16 @@ Add `circular` attribute to turn button into circular form.
 <gaia-button circular><i data-icon="camera"></i></gaia-button>
 ```
 
+## Tests
+
+1. Ensure Firefox Nightly is installed on your machine.
+2. `$ npm install`
+3. `$ npm test`
+
+If your would like tests to run on file change use:
+
+`$ npm run test-dev`
+
 ## Lint check
 
 Run lint check with command:
