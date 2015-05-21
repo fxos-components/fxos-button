@@ -8,6 +8,12 @@
 var component = require('gaia-component');
 
 /**
+ * Simple logger
+ * @type {Function}
+ */
+var debug = 0 ? console.log.bind(console) : function() {};
+
+/**
  * Exports
  */
 
@@ -34,13 +40,16 @@ module.exports = component.register('gaia-button', {
     },
 
     disabled: {
-      get: function() { return this.getAttribute('disabled'); },
+      get: function() { return this._disabled; },
       set: function(value) {
-        value = !!(value === '' || value);
+        value = !!(value || value === '');
+        if (this._disabled === value) { return; }
+        debug('set disabled', value);
+        this._disabled = value;
         if (value) {
-          this.setAttribute('disabled', '');
+          this.setAttr('disabled', '');
         } else {
-          this.removeAttribute('disabled');
+          this.removeAttr('disabled');
         }
       }
     }
