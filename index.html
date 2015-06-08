@@ -15,20 +15,9 @@
   <style type="text/css">
 
     body {
-      padding-top: 48px;
+      padding: 48px var(--base-m) 0 var(--base-m);
       background-color: var(--background);
     }
-/*
-    [data-icon=back-light] {
-      margin-left: -9px;
-      margin-right: 10px;
-    }
-
-
-    [data-icon=forward-light] {
-      margin-left: 10px;
-      margin-right: -9px;
-    }*/
 
     [flex] {
       display: flex;
@@ -49,19 +38,19 @@
   <hr/>
 
   <section>
-    <gaia-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></gaia-button>
-    <gaia-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></gaia-button>
+    <gaia-button><span data-l10n-id="back" data-icon="back-light">Back</span></gaia-button>
+    <gaia-button><span data-l10n-id="forward" data-icon-end="forward-light">Forward</span></gaia-button>
   </section>
 
   <hr/>
 
   <section flex>
-    <gaia-button circular><i data-icon="camera"></i></gaia-button>
-    <gaia-button circular><i data-icon="bug"></i></gaia-button>
-    <gaia-button circular><i data-icon="video"></i></gaia-button>
-    <gaia-button circular><i data-icon="camera"></i></gaia-button>
-    <gaia-button circular><i data-icon="reload"></i></gaia-button>
-    <gaia-button circular><i data-icon="airplane"></i></gaia-button>
+    <gaia-button circular><span data-l10n-id="camera" data-icon="camera"/></gaia-button>
+    <gaia-button circular><span data-l10n-id="bug" data-icon="bug"/></gaia-button>
+    <gaia-button circular><span data-l10n-id="video" data-icon="video"/></gaia-button>
+    <gaia-button circular><span data-l10n-id="camera" data-icon="camera"/></gaia-button>
+    <gaia-button circular><span data-l10n-id="reload" data-icon="reload"/></gaia-button>
+    <gaia-button circular><span data-l10n-id="airplane" data-icon="airplane"/></gaia-button>
   </section>
 </body>
 </html>

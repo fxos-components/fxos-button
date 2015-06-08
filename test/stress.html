@@ -36,9 +36,9 @@ run.onclick = function() {
   for (var i = 0; i < count; i++) {
     container.insertAdjacentHTML('beforeend', `<gaia-button>button ` + i + `</gaia-button>
       <gaia-button disabled>button disabled</gaia-button>
-      <gaia-button circular><i data-icon="camera"></i></gaia-button>
-      <gaia-button><i data-icon="back-light"></i><span>Back</span></gaia-button>
-      <gaia-button><span>Forward</span><i data-icon="forward-light"></i></gaia-button>`);
+      <gaia-button circular><span data-l10n-id="camera" data-icon="camera"/></gaia-button>
+      <gaia-button><span data-l10n-id="back" data-icon="back-light">Back</span></gaia-button>
+      <gaia-button><span data-l10n-id="forward" data-icon="forward-light">Forward</span></gaia-button>`);
   }
 
   results.push((performance.now() - startTime).toFixed(2));
