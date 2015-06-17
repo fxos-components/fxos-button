@@ -38,13 +38,13 @@ suite('GaiaButton', function() {
     assert.equal(this.el.getAttribute('disabled'), 'true');
     assert.equal(this.el.disabled, true);
 
-    this.el.deviceType = 'tv';
-    assert.equal(this.el.getAttribute('deviceType'), 'tv');
+    this.el.type = 'large';
+    assert.equal(this.el.getAttribute('type'), 'large');
 
     this.el.toggled = true;
     assert.equal(this.el.getAttribute('toggled'), '');
 
-    this.el.keyboardEnabled = 'tv';
+    this.el.keyboardEnabled = true;
     assert.equal(this.el.getAttribute('keyboardEnabled'), '');
   });
 

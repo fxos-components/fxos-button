@@ -29,7 +29,7 @@ module.exports = component.register('gaia-button', {
       this.addEventListener('keyup', this._handleKeyEvent.bind(this));
     }
 
-    if (this.deviceType === 'tv') {
+    if (this.type === 'large') {
       this.addEventListener('transitionend',
                             this._handleTransitionEnd.bind(this));
     }
@@ -117,13 +117,13 @@ module.exports = component.register('gaia-button', {
       }
     },
 
-    deviceType: {
-      get: function() { return this.getAttribute('deviceType'); },
+    type: {
+      get: function() { return this.getAttribute('type'); },
       set: function(value) {
-        if (value === 'tv') {
-          this.setAttr('deviceType', 'tv');
+        if (value) {
+          this.setAttr('type', value);
         } else {
-          this.removeAttr('deviceType');
+          this.removeAttr('type');
         }
       }
     }
@@ -278,7 +278,7 @@ module.exports = component.register('gaia-button', {
      ---------------------------------------------------------*/
 
     /** base visual */
-    :host([deviceType='tv']) {
+    :host([type='large']) {
       display: inline-block;
       width: 8rem;
       height: 8rem;
@@ -303,29 +303,34 @@ module.exports = component.register('gaia-button', {
       transition-duration: 0.42s;
     }
 
-    :host([deviceType='tv']:focus) {
+    :host([type='large']:focus),
+    :host([type='large'][released]:focus) {
       outline: 0;
       background-color: #ffffff;
       transform: scale(1.2);
       transition-duration: 0.42s;
     }
 
-    :host([deviceType='tv'][released]) {
+    :host([type='large'][released]:focus) {
       transition-duration: 0.16s;
     }
 
-    :host([deviceType='tv']:active),
-    :host([deviceType='tv'][toggled]) {
+    :host([type='large']:active),
+    :host([type='large'][toggled]) {
       background-color: #00caf2;
       transform: scale(0.8);
       transition-duration: 0.06s;
     }
 
-    :host([deviceType='tv'][disabled]) {
+    :host([type='large'][disabled]) {
       background-color: rgba(0, 0, 0, 0.5);
     }
 
-    :host([deviceType='tv'][data-icon]:before) {
+    :host([type='large']) ::content i {
+      margin: 0;
+    }
+
+    :host([type='large']) ::content i:before {
       font-size: 5.4rem;
       line-height: 8rem;
       text-align: center;
@@ -334,18 +339,24 @@ module.exports = component.register('gaia-button', {
       transition-property: color;
       transition-timing-function: cubic-bezier(0.25, 0, 0, 1.0);
       transition-delay: 0ms;
+      transition-duration: 0.42s;
     }
 
-    :host([deviceType='tv'][data-icon]:focus:before) {
+    :host([type='large'][released]:focus) ::content i:before {
+      transition-duration: 0.16s;
+    }
+
+    :host([type='large']:focus) ::content i:before {
       color: #2d2d2d;
     }
 
-    :host([deviceType='tv'][data-icon]:active:before),
-    :host([deviceType='tv'][data-icon][toggled]:before) {
+    :host([type='large']:active) ::content i:before,
+    :host([type='large'][toggled]) ::content i:before {
       color: #ffffff;
+      transition-duration: 0.06s;
     }
 
-    :host([deviceType='tv'][data-icon][disabled]:before) {
+    :host([type='large'][disabled]) ::content i:before {
       color: #ffffff;
       opacity: 0.3;
     }
