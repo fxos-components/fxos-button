@@ -1,4 +1,4 @@
-/* globals define */
+/* globals define, KeyEvent */
 (function(define){'use strict';define(function(require,exports,module){
 
 /**
@@ -24,6 +24,35 @@ module.exports = component.register('gaia-button', {
     this.setupShadowRoot();
     this.setAttribute('role', 'button');
     this.tabIndex = 0;
+    if (this.keyboardEnabled) {
+      this.addEventListener('keydown', this._handleKeyEvent.bind(this));
+      this.addEventListener('keyup', this._handleKeyEvent.bind(this));
+    }
+
+    if (this.type === 'large') {
+      this.addEventListener('transitionend',
+                            this._handleTransitionEnd.bind(this));
+    }
+  },
+
+  _handleKeyEvent: function(e) {
+    if (e.keyCode !== KeyEvent.DOM_VK_RETURN) {
+      return;
+    }
+
+    if (e.type === 'keydown') {
+      this.toggled = true;
+    } else if (e.type === 'keyup') {
+      this.toggled = false;
+      this.setAttribute('released', '');
+      this.click();
+    }
+  },
+
+  _handleTransitionEnd: function(e) {
+    if (this.hasAttribute('released')) {
+      this.removeAttribute('released');
+    }
   },
 
   attrs: {
@@ -50,6 +79,51 @@ module.exports = component.register('gaia-button', {
           this.setAttr('disabled', '');
         } else {
           this.removeAttr('disabled');
+        }
+      }
+    },
+
+    keyboardEnabled: {
+      get: function() { return this.hasAttribute('keyboardEnabled'); },
+      set: function(value) {
+        value = !!(value === '' || value);
+
+        if (value === true) {
+          this.setAttr('keyboardEnabled', '');
+          this.addEventListener('keydown', this._handleKeyEvent.bind(this));
+          this.addEventListener('keyup', this._handleKeyEvent.bind(this));
+        } else {
+          this.removeAttr('keyboardEnabled');
+          this.removeEventListener('keydown', this._handleKeyEvent.bind(this));
+          this.removeEventListener('keyup', this._handleKeyEvent.bind(this));
+        }
+      }
+    },
+
+    toggled: {
+      get: function() { return this.hasAttribute('toggled'); },
+      set: function(value) {
+        value = !!(value === '' || value);
+
+        if (value === this.toggled) {
+          return;
+        }
+
+        if (value === true) {
+          this.setAttr('toggled', '');
+        } else {
+          this.removeAttr('toggled');
+        }
+      }
+    },
+
+    type: {
+      get: function() { return this.getAttribute('type'); },
+      set: function(value) {
+        if (value) {
+          this.setAttr('type', value);
+        } else {
+          this.removeAttr('type');
         }
       }
     }
@@ -200,6 +274,92 @@ module.exports = component.register('gaia-button', {
       -moz-margin-start: 8px;
     }
 
+    /** TV buttons
+     ---------------------------------------------------------*/
+
+    /** base visual */
+    :host([type='large']) {
+      display: inline-block;
+      width: 8rem;
+      height: 8rem;
+      /* we need to set border to none to remove the button border */
+      border: none;
+      /* the radius is still make button as round even if we don't have
+         border */
+      border-radius: 50%;
+      /* 50% is not a real circle because of rounding, we have to use a value
+         larger than 50% */
+      -moz-outline-radius: 60%;
+      outline: transparent 0 solid;
+      background-color: rgba(0, 0, 0, 0.5);
+      background-repeat: no-repeat;
+      background-size: 5.4rem auto;
+      background-position: center center;
+      font-style: italic;
+
+      transition-property: background-color, transform, outline;
+      transition-timing-function: cubic-bezier(0.25, 0, 0, 1.0);
+      transition-delay: 0ms;
+      transition-duration: 0.42s;
+    }
+
+    :host([type='large']:focus),
+    :host([type='large'][released]:focus) {
+      outline: 0;
+      background-color: #ffffff;
+      transform: scale(1.2);
+      transition-duration: 0.42s;
+    }
+
+    :host([type='large'][released]:focus) {
+      transition-duration: 0.16s;
+    }
+
+    :host([type='large']:active),
+    :host([type='large'][toggled]) {
+      background-color: #00caf2;
+      transform: scale(0.8);
+      transition-duration: 0.06s;
+    }
+
+    :host([type='large'][disabled]) {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    :host([type='large']) ::content i {
+      margin: 0;
+    }
+
+    :host([type='large']) ::content i:before {
+      font-size: 5.4rem;
+      line-height: 8rem;
+      text-align: center;
+      color: #ffffff;
+      white-space: normal;
+      transition-property: color;
+      transition-timing-function: cubic-bezier(0.25, 0, 0, 1.0);
+      transition-delay: 0ms;
+      transition-duration: 0.42s;
+    }
+
+    :host([type='large'][released]:focus) ::content i:before {
+      transition-duration: 0.16s;
+    }
+
+    :host([type='large']:focus) ::content i:before {
+      color: #2d2d2d;
+    }
+
+    :host([type='large']:active) ::content i:before,
+    :host([type='large'][toggled]) ::content i:before {
+      color: #ffffff;
+      transition-duration: 0.06s;
+    }
+
+    :host([type='large'][disabled]) ::content i:before {
+      color: #ffffff;
+      opacity: 0.3;
+    }
     </style>`
 });
 
