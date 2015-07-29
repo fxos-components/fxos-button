@@ -1,4 +1,4 @@
-/* globals define */
+/* globals define, KeyEvent */
 (function(define){'use strict';define(function(require,exports,module){
 
 /**
@@ -24,6 +24,26 @@ module.exports = component.register('gaia-button', {
     this.setupShadowRoot();
     this.setAttribute('role', 'button');
     this.tabIndex = 0;
+    this.addEventListener('keydown', this._handleKeyEvent.bind(this));
+    this.addEventListener('keyup', this._handleKeyEvent.bind(this));
+    this.addEventListener('blur', this._handleKeyEvent.bind(this));
+  },
+
+  /**
+   * Handle 'Return' key events. Other key events are ignored.
+   */
+  _handleKeyEvent: function(e) {
+    // If the keystroke is not the 'Return' key
+    if (e.keyCode !== KeyEvent.DOM_VK_RETURN) {
+      return;
+    }
+
+    if (e.type === 'keydown') {
+      this.toggled = true;
+    } else if (e.type === 'keyup') {
+      this.toggled = false;
+      this.click();
+    }
   },
 
   attrs: {
@@ -50,6 +70,24 @@ module.exports = component.register('gaia-button', {
           this.setAttr('disabled', '');
         } else {
           this.removeAttr('disabled');
+        }
+      }
+    },
+
+    // For displaying toggled state
+    toggled: {
+      get: function() { return this.hasAttribute('toggled'); },
+      set: function(value) {
+        value = !!(value === '' || value);
+
+        if (value === this.toggled) {
+          return;
+        }
+
+        if (value === true) {
+          this.setAttr('toggled', '');
+        } else {
+          this.removeAttr('toggled');
         }
       }
     }
@@ -199,7 +237,6 @@ module.exports = component.register('gaia-button', {
     ::content span + i {
       -moz-margin-start: 8px;
     }
-
     </style>`
 });
 
