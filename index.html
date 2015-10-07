@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html dir="ltr">
 <head>
   <meta charset="utf-8" />
   <title>&lt;gaia-button&gt;</title>
@@ -30,6 +30,15 @@
       margin-right: -9px;
     }*/
 
+    html[dir="ltr"] [data-icon=forward-light]:before,
+    html[dir="rtl"] [data-icon=back-light]:before {
+      content: 'right-light';
+    }
+    html[dir="rtl"] [data-icon=forward-light]:before,
+    html[dir="ltr"] [data-icon=back-light]:before {
+      content: 'left-light';
+    }
+
     [flex] {
       display: flex;
       justify-content: space-around;
@@ -56,12 +65,12 @@
   <hr/>
 
   <section flex>
-    <gaia-button circular><i data-icon="camera"></i></gaia-button>
-    <gaia-button circular><i data-icon="bug"></i></gaia-button>
-    <gaia-button circular><i data-icon="video"></i></gaia-button>
-    <gaia-button circular><i data-icon="camera"></i></gaia-button>
-    <gaia-button circular><i data-icon="reload"></i></gaia-button>
-    <gaia-button circular><i data-icon="airplane"></i></gaia-button>
+    <gaia-button circular><i data-icon="camera" aria-hidden="true"></i></gaia-button>
+    <gaia-button circular><i data-icon="bug" aria-hidden="true"></i></gaia-button>
+    <gaia-button circular><i data-icon="video" aria-hidden="true"></i></gaia-button>
+    <gaia-button circular><i data-icon="camera" aria-hidden="true"></i></gaia-button>
+    <gaia-button circular><i data-icon="reload" aria-hidden="true"></i></gaia-button>
+    <gaia-button circular><i data-icon="airplane" aria-hidden="true"></i></gaia-button>
   </section>
 </body>
 </html>
