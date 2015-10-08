@@ -14,6 +14,13 @@
   #result {
     font: 8px;
   }
+
+  [data-icon=forward-light]:before {
+    content: 'right-light';
+  }
+  [data-icon=back-light]:before {
+    content: 'left-light';
+  }
   </style>
 </head>
 <body role="application" class="theme-settings">
@@ -36,9 +43,9 @@ run.onclick = function() {
   for (var i = 0; i < count; i++) {
     container.insertAdjacentHTML('beforeend', `<gaia-button>button ` + i + `</gaia-button>
       <gaia-button disabled>button disabled</gaia-button>
-      <gaia-button circular><i data-icon="camera"></i></gaia-button>
-      <gaia-button><i data-icon="back-light"></i><span>Back</span></gaia-button>
-      <gaia-button><span>Forward</span><i data-icon="forward-light"></i></gaia-button>`);
+      <gaia-button circular><i data-icon="camera" aria-hidden="true"></i></gaia-button>
+      <gaia-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></gaia-button>
+      <gaia-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></gaia-button>`);
   }
 
   results.push((performance.now() - startTime).toFixed(2));
