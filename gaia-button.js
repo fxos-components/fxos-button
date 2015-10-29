@@ -102,7 +102,7 @@ module.exports = component.register('gaia-button', {
     }
 
     /**
-     * Pressed
+     * :active
      */
 
     :host(:active) {
@@ -118,6 +118,7 @@ module.exports = component.register('gaia-button', {
     :host([circular]) {
       width: 50px;
       min-width: 0;
+      max-width: 50px;
       border-radius: 50%;
     }
 
