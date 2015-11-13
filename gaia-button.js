@@ -22,8 +22,30 @@ module.exports = component.register('gaia-button', {
 
   created: function() {
     this.setupShadowRoot();
+
+    // Configure
+    this.disabled = this.getAttribute('disabled');
+
+    // process everything that doesn't affect user interaction
+    // after the component is created
+    setTimeout(() => this.makeAccessible());
+  },
+
+  /**
+   * Accessibility enhancements.
+   * Read gaia-button as button.
+   * make it tabable
+   * read its disabled state
+   */
+  makeAccessible: function() {
     this.setAttribute('role', 'button');
+
+    // Make tabable
     this.tabIndex = 0;
+
+    if (this.disabled) {
+      this.setAttribute('aria-disabled', true);
+    }
   },
 
   attrs: {
@@ -48,8 +70,10 @@ module.exports = component.register('gaia-button', {
         this._disabled = value;
         if (value) {
           this.setAttr('disabled', '');
+          this.setAttribute('aria-disabled', true);
         } else {
           this.removeAttr('disabled');
+          this.removeAttribute('aria-disabled');
         }
       }
     }
