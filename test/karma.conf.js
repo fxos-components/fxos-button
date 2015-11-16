@@ -20,7 +20,7 @@ module.exports = function(config) {
       'bower_components/gaia-component/gaia-component.js',
       'bower_components/gaia-icons/gaia-icons.js',
       'gaia-button.js',
-      'test/test.js',
+      'test/test-unit.js',
       {
         pattern: 'bower_components/gaia-icons/gaia-icons.css',
         included: false
