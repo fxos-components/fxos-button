@@ -48,6 +48,14 @@ Add `circular` attribute to turn button into circular form.
 <gaia-button circular><i data-icon="camera"></i></gaia-button>
 ```
 
+## Readiness
+
+- [x] Accessibility ([@yzen](https://github.com/yzen))
+- [ ] Test Coverage
+- [ ] Performance
+- [ ] Visual/UX
+- [ ] RTL
+
 ## Tests
 
 1. Ensure Firefox Nightly is installed on your machine.
