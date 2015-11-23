@@ -211,8 +211,8 @@ module.exports = component.register('gaia-button', {
       padding: 0;
     }
 
-    i:before {
-      font-size: 26px;
+    ::content i:before {
+      font-size: 22px;
     }
 
     ::content i {
