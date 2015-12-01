@@ -1,14 +1,14 @@
-# &lt;gaia-button&gt; [![](https://travis-ci.org/gaia-components/gaia-button.svg)](https://travis-ci.org/gaia-components/gaia-button) [![devDependency Status](https://david-dm.org/gaia-components/gaia-header/dev-status.svg)](https://david-dm.org/gaia-components/gaia-button#info=devDependencies)
+# &lt;gaia-button&gt; [![](https://travis-ci.org/fxos-components/gaia-button.svg)](https://travis-ci.org/fxos-components/gaia-button)
 
 ## Installation
 
 ```bash
-$ bower install gaia-components/gaia-button
+$ bower install fxos-components/gaia-button
 ```
 
 ## Examples
 
-- [Example](http://gaia-components.github.io/gaia-button/)
+- [Example](http://fxos-components.github.io/gaia-button/)
 
 ## Usage
 

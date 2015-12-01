@@ -1,7 +1,6 @@
 {
   "name": "gaia-button",
-  "version": "0.1.0",
-  "homepage": "https://github.com/gaia-components/gaia-button",
+  "homepage": "https://github.com/fxos-components/gaia-button",
   "license": "MIT",
   "main": "gaia-button.js",
   "devDependencies": {
@@ -20,23 +19,24 @@
     "marionette-helper": "0.3.1",
     "marionette-js-runner": "1.1.3"
   },
+
   "scripts": {
     "install": "bower install",
     "test-lint": "./node_modules/jshint/bin/jshint gaia-button.js test/*.js",
     "test-unit": "./node_modules/karma/bin/karma start test/karma.conf.js --single-run",
     "test-unit-dev": "./node_modules/karma/bin/karma start test/karma.conf.js",
-    "test-integration": "./node_modules/.bin/marionette-mocha --reporter spec --host marionette-firefox-host --runtime $FIREFOX_NIGHTLY_BIN --timeout 6000s test/test-integration.js",
-    "bundle": "mkdir -p dist && browserify gaia-button.js --outfile ./dist/gaia-button.js --standalone GaiaButton",
-    "es5": "mkdir -p dist && babel ./dist/gaia-button.js --out-file ./dist/gaia-button-es5.js",
-    "build": "npm run bundle && npm run es5"
+    "test-integration": "./node_modules/.bin/marionette-mocha --reporter spec --host marionette-firefox-host --runtime $FIREFOX_NIGHTLY_BIN --timeout 6000s test/test-integration.js"
   },
+
   "repository": {
     "type": "git",
-    "url": "git://github.com/gaia-components/gaia-button.git"
+    "url": "git://github.com/fxos-components/gaia-button.git"
   },
+
   "bugs": {
-    "url": "https://github.com/gaia-components/gaia-button/issues"
+    "url": "https://github.com/fxos-components/gaia-button/issues"
   },
+
   "browser": {
     "gaia-component": "./bower_components/gaia-component/gaia-component.js"
   }

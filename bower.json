@@ -2,7 +2,7 @@
   "name": "gaia-button",
   "version": "0.0.5",
   "main": "gaia-button.js",
-  "homepage": "https://github.com/gaia-components/gaia-button",
+  "homepage": "https://github.com/fxos-components/gaia-button",
   "authors": [
     "cyee@mozilla.com"
   ],
@@ -18,13 +18,13 @@
     "README.md"
   ],
   "devDependencies": {
-    "base": "gaia-components/base",
-    "gaia-fonts": "gaia-components/gaia-fonts",
-    "gaia-icons": "gaia-components/gaia-icons",
-    "gaia-theme": "gaia-components/gaia-theme"
+    "base": "fxos-components/base",
+    "gaia-fonts": "fxos-components/gaia-fonts",
+    "gaia-icons": "fxos-components/gaia-icons",
+    "gaia-theme": "fxos-components/gaia-theme"
   },
   "dependencies": {
-    "gaia-component": "gaia-components/gaia-component#~0.4.0"
+    "gaia-component": "fxos-components/gaia-component#~0.4.0"
   },
   "resolutions": {
     "gaia-component": "~0.4.0"
