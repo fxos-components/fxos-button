@@ -1,7 +1,8 @@
-/* jshint maxlen: 100 */
 /*global sinon, assert, suite, setup, teardown, test */
-'use strict';
+/*jshint maxlen: 100 */
+
 suite('GaiaButton', function() {
+  'use strict';
 
   setup(function() {
     this.sinon = sinon.sandbox.create();
