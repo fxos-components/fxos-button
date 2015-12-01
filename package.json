@@ -19,7 +19,6 @@
     "marionette-helper": "0.3.1",
     "marionette-js-runner": "1.1.3"
   },
-
   "scripts": {
     "install": "bower install",
     "test-lint": "./node_modules/jshint/bin/jshint gaia-button.js test/*.js",
@@ -27,17 +26,15 @@
     "test-unit-dev": "./node_modules/karma/bin/karma start test/karma.conf.js",
     "test-integration": "./node_modules/.bin/marionette-mocha --reporter spec --host marionette-firefox-host --runtime $FIREFOX_NIGHTLY_BIN --timeout 6000s test/test-integration.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git://github.com/fxos-components/gaia-button.git"
   },
-
   "bugs": {
     "url": "https://github.com/fxos-components/gaia-button/issues"
   },
-
   "browser": {
     "gaia-component": "./bower_components/gaia-component/gaia-component.js"
-  }
+  },
+  "version": "0.1.1"
 }
