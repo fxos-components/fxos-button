@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - '0.12.0'
+  - '5.1.0'
 
 install:
   - npm install
@@ -21,4 +21,4 @@ env:
   matrix:
     - CI_ACTION="npm run test-lint"
     - CI_ACTION="npm run test-unit"
-    - CI_ACTION="npm run test-integration"
+    # - CI_ACTION="npm run test-integration"
