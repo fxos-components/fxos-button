@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <title>&lt;fxos-button&gt;</title>
+  <meta name="description" content="fxos-button demo" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+  <link rel="stylesheet" href="node_modules/fxos-theme/fxos-theme.css">
+  <link rel="stylesheet" href="node_modules/fxos-icons/fxos-icons.css">
+  <link rel="stylesheet" href="node_modules/fxos-font/fxos-font.css">
+  <script src="node_modules/fxos-theme/lib/fxos-theme-selector.js"></script>
+  <script src="node_modules/fxos-component/fxos-component.js"></script>
+  <script src="fxos-button.js"></script>
+  <style>
+    body {
+      background: var(--fxos-background);
+      font-family: 'FiraSans';
+    }
+
+    h1 {
+      color: var(--fxos-text-color);
+      text-align: center;
+      font-weight: 300;
+    }
+
+    body {
+      padding-top: 48px;
+      background: var(--fxos-background);
+      font-family: 'FiraSans';
+    }
+
+    html[dir="ltr"] [data-icon=forward-light]:before,
+    html[dir="rtl"] [data-icon=back-light]:before {
+      content: 'right-light';
+    }
+    html[dir="rtl"] [data-icon=forward-light]:before,
+    html[dir="ltr"] [data-icon=back-light]:before {
+      content: 'left-light';
+    }
+
+    [flex] {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body role="application" class="l-align-center">
+  <fxos-theme-selector></fxos-theme-selector>
+  <h1>&lt;fxos-button&gt;</h1>
+
+  <section>
+    <fxos-button>Gaia button 1</fxos-button>
+    <fxos-button disabled>Gaia button 1</fxos-button>
+  </section>
+
+  <section>
+    <fxos-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></fxos-button>
+    <fxos-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></fxos-button>
+  </section>
+
+  <section flex>
+    <fxos-button circular><i data-icon="camera" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular><i data-icon="bug" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular><i data-icon="video" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular><i data-icon="camera" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular><i data-icon="reload" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular><i data-icon="airplane" aria-hidden="true"></i></fxos-button>
+  </section>
+</body>
+</html>

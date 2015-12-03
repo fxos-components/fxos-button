@@ -2,14 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>&lt;gaia-button&gt;</title>
-  <meta name="description" content="gaia-button perf" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <link rel="stylesheet" href="../bower_components/base/base.css">
-  <link rel="stylesheet" href="../bower_components/gaia-theme/gaia-theme.css">
-  <link rel="stylesheet" href="../bower_components/gaia-icons/gaia-icons.css">
-  <script src="../bower_components/gaia-component/gaia-component.js"></script>
-  <script src="../gaia-button.js"></script>
+  <title>&lt;fxos-button&gt;</title>
+  <meta name="description" content="fxos-button perf" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+  <link rel="stylesheet" href="../node_modules/fxos-theme/fxos-theme.css">
+  <link rel="stylesheet" href="../node_modules/fxos-icons/fxos-icons.css">
+  <script src="../node_modules/fxos-component/fxos-component.js"></script>
+  <script src="../fxos-button.js"></script>
   <style>
   #result {
     font: 8px;
@@ -18,6 +17,7 @@
   [data-icon=forward-light]:before {
     content: 'right-light';
   }
+
   [data-icon=back-light]:before {
     content: 'left-light';
   }
@@ -41,11 +41,11 @@ run.onclick = function() {
   var startTime = performance.now();
 
   for (var i = 0; i < count; i++) {
-    container.insertAdjacentHTML('beforeend', `<gaia-button>button ` + i + `</gaia-button>
-      <gaia-button disabled>button disabled</gaia-button>
-      <gaia-button circular><i data-icon="camera" aria-hidden="true"></i></gaia-button>
-      <gaia-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></gaia-button>
-      <gaia-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></gaia-button>`);
+    container.insertAdjacentHTML('beforeend', `<fxos-button>button ` + i + `</fxos-button>
+      <fxos-button disabled>button disabled</fxos-button>
+      <fxos-button circular><i data-icon="camera" aria-hidden="true"></i></fxos-button>
+      <fxos-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></fxos-button>
+      <fxos-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></fxos-button>`);
   }
 
   results.push((performance.now() - startTime).toFixed(2));

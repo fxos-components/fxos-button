@@ -1,6 +1,5 @@
 {
   "camelcase": false,
-  "curly": true,
   "forin": false,
   "latedef": "nofunc",
   "newcap": false,
@@ -22,7 +21,9 @@
   "maxerr": 1000,
   "regexdash": true,
   "laxcomma": true,
+  "laxbreak": true,
   "proto": true,
+  "boss": true,
 
   "browser": true,
   "devel": true,

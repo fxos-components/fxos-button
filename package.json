@@ -1,42 +1,46 @@
 {
-  "name": "gaia-button",
+  "name": "fxos-button",
   "version": "0.1.1",
-  "homepage": "https://github.com/fxos-components/gaia-button",
+  "homepage": "https://github.com/fxos-components/fxos-button",
   "license": "MIT",
-  "main": "gaia-button.js",
+  "main": "fxos-button.js",
+  "dependencies": {
+    "fxos-component": "^1.0.0"
+  },
   "devDependencies": {
-    "babel": "^6.1.18",
-    "bower": "^1.4.1",
-    "browserify": "^12.0.1",
+    "chai": "3.4.1",
+    "fxos-font": "^1.0.0",
+    "fxos-icons": "^2.0.0",
+    "fxos-theme": "^2.0.0",
     "jshint": "^2.9.1-rc1",
     "karma": "^0.13.9",
-    "karma-sinon-chai": "^1.1.0",
     "karma-firefox-launcher": "^0.1.6",
     "karma-mocha": "^0.2.0",
-    "mocha": "^2.3.3",
-    "mozilla-download": "^1.1.1",
-    "chai": "3.4.1",
+    "karma-sinon-chai": "^1.1.0",
     "marionette-client": "1.9.4",
     "marionette-firefox-host": "1.0.4",
     "marionette-helper": "0.3.2",
-    "marionette-js-runner": "1.1.3"
+    "marionette-js-runner": "1.1.3",
+    "mocha": "^2.3.3",
+    "mozilla-download": "^1.1.1",
+    "nws": "^0.6.1",
+    "webpack": "^1.12.9"
   },
   "scripts": {
-    "install": "bower install",
-    "test-lint": "./node_modules/jshint/bin/jshint gaia-button.js",
-    "test-unit": "./node_modules/karma/bin/karma start test/karma.conf.js --single-run",
-    "test-unit-dev": "./node_modules/karma/bin/karma start test/karma.conf.js",
-    "test-integration": "./node_modules/.bin/marionette-mocha --reporter spec --host marionette-firefox-host --runtime $FIREFOX_NIGHTLY_BIN --timeout 6000s test/test-integration.js",
-    "test": "npm run test-lint && npm run test-unit && npm run test-integration"
+    "start": "npm run -s watch & nws -p 8010 -d examples/test-cases -o",
+    "test-lint": "jshint src/*.js",
+    "test-unit": "karma start test/karma.conf.js --single-run",
+    "test-dev": "npm run -s watch & karma start test/karma.conf.js",
+    "test-integration": "marionette-mocha --reporter spec --host marionette-firefox-host --runtime $FIREFOX_NIGHTLY_BIN --timeout 6000s test/test-integration.js",
+    "test": "npm run test-lint && npm run test-unit && npm run test-integration",
+    "build": "webpack",
+    "watch": "webpack -w"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/fxos-components/gaia-button.git"
+    "url": "git://github.com/fxos-components/fxos-button.git"
   },
   "bugs": {
-    "url": "https://github.com/fxos-components/gaia-button/issues"
-  },
-  "browser": {
-    "gaia-component": "./bower_components/gaia-component/gaia-component.js"
+    "url": "https://github.com/fxos-components/fxos-button/issues"
   }
 }

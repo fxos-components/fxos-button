@@ -1,19 +1,19 @@
-# &lt;gaia-button&gt; [![](https://travis-ci.org/fxos-components/gaia-button.svg)](https://travis-ci.org/fxos-components/gaia-button)
+# &lt;fxos-button&gt; [![](https://travis-ci.org/fxos-components/fxos-button.svg)](https://travis-ci.org/fxos-components/fxos-button)
 
 ## Installation
 
 ```bash
-$ bower install fxos-components/gaia-button
+$ npm install fxos-button
 ```
 
 ## Examples
 
-- [Example](http://fxos-components.github.io/gaia-button/)
+- [Example](http://fxos-components.github.io/fxos-button/)
 
 ## Usage
 
 ```html
-<gaia-button>normal button<gaia-button>
+<fxos-button>normal button<fxos-button>
 ```
 
 ### disable
@@ -21,21 +21,19 @@ $ bower install fxos-components/gaia-button
 Add `disabled` attribute to disable the button.
 
 ```html
-<gaia-button disabled>button disabled</gaia-button>
+<fxos-button disabled>button disabled</fxos-button>
 ```
 
 ### With icon
 
-Button Can show with icon (need import `gaia-icons`) at left
+Button be used in conjunction with [fxos-icons](https://github.com/fxos-components/fxos-icons).
 
 ```html
-<gaia-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></gaia-button>
+<fxos-button><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></fxos-button>
 ```
 
-or right
-
 ```html
-<gaia-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></gaia-button>
+<fxos-button><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></fxos-button>
 ```
 
 Remember to add `aria-hidden="true"` when both icon and text existed for **Accessibility**. So the screen reader will read the button text and ignore the icon text.
@@ -45,7 +43,7 @@ Remember to add `aria-hidden="true"` when both icon and text existed for **Acces
 Add `circular` attribute to turn button into circular form.
 
 ```html
-<gaia-button circular><i data-icon="camera"></i></gaia-button>
+<fxos-button circular><i data-icon="camera"></i></fxos-button>
 ```
 
 ## Readiness
@@ -55,6 +53,13 @@ Add `circular` attribute to turn button into circular form.
 - [ ] Performance
 - [ ] Visual/UX
 - [ ] RTL
+
+## Developing locally
+
+1. `git clone https://github.com/fxos-components/fxos-button.git`
+2. `cd fxos-button`
+3. `npm install` (NPM3)
+4. `npm start`
 
 ## Tests
 

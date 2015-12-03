@@ -1,7 +1,7 @@
 {
-  "name": "gaia-button",
-  "main": "gaia-button.js",
-  "homepage": "https://github.com/fxos-components/gaia-button",
+  "name": "fxos-button",
+  "main": "fxos-button.js",
+  "homepage": "https://github.com/fxos-components/fxos-button",
   "authors": [
     "wilsonpage@me.com"
   ],
@@ -18,18 +18,7 @@
     "README.md"
   ],
 
-  "devDependencies": {
-    "base": "fxos-components/base",
-    "gaia-fonts": "fxos-components/gaia-fonts",
-    "gaia-icons": "fxos-components/gaia-icons",
-    "gaia-theme": "fxos-components/gaia-theme"
-  },
-
   "dependencies": {
-    "gaia-component": "fxos-components/gaia-component#~0.4.0"
-  },
-
-  "resolutions": {
-    "gaia-component": "~0.4.0"
+    "fxos-component": "fxos-components/fxos-component#~1.0.0"
   }
 }
