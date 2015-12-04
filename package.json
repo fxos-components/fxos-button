@@ -1,6 +1,6 @@
 {
   "name": "fxos-button",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/fxos-components/fxos-button",
   "license": "MIT",
   "main": "fxos-button.js",
