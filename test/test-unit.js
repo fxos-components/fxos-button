@@ -8,7 +8,7 @@ suite('GaiaButton', function() {
     this.sinon = sinon.sandbox.create();
     // DOM container to put test cases
     this.dom = document.createElement('div');
-    this.dom.innerHTML = '<gaia-button></gaia-button>';
+    this.dom.innerHTML = '<fxos-button></fxos-button>';
     this.el = this.dom.firstElementChild;
     document.body.appendChild(this.dom);
   });
@@ -35,13 +35,13 @@ suite('GaiaButton', function() {
   });
 
   test('It applies the initial `disabled` value on creation', function() {
-    this.dom.innerHTML = '<gaia-button disabled></gaia-button>';
+    this.dom.innerHTML = '<fxos-button disabled></fxos-button>';
     var el = this.dom.firstElementChild;
     assert.ok(el.hasAttribute('disabled'));
   });
 
   suite('accessibility', function() {
-    test('gaia-button attributes are correctly set', function(done) {
+    test('fxos-button attributes are correctly set', function(done) {
       // Timeout required as accessibility attributes are added in the next
       // turn of the event loop
       setTimeout(function() {
@@ -64,7 +64,7 @@ suite('GaiaButton', function() {
         this.el.setAttribute('disabled', true);
         assert.equal(this.el.getAttribute('aria-disabled'), 'true');
 
-        this.dom.innerHTML = '<gaia-button disabled></gaia-button>';
+        this.dom.innerHTML = '<fxos-button disabled></fxos-button>';
         var el = this.dom.firstElementChild;
         // Timeout required as accessibility attributes are added in the next
         // turn of the event loop

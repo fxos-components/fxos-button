@@ -2,20 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>gaia-button</title>
-  <meta name="description" content="Integration tests for gaia-button" />
+  <title>fxos-button</title>
+  <meta name="description" content="fxos-button integration tests" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../bower_components/base/base.css">
-  <link rel="stylesheet" type="text/css" href="../bower_components/gaia-theme/gaia-theme.css">
-  <link rel="stylesheet" type="text/css" href="../bower_components/gaia-icons/gaia-icons.css">
-  <link rel="stylesheet" type="text/css" href="../bower_components/gaia-fonts/style.css">
-  <script src="../bower_components/gaia-component/gaia-component.js"></script>
-  <script src="../bower_components/drag/drag.js"></script>
-  <script src="../gaia-button.js"></script>
+  <script src="../node_modules/fxos-component/fxos-component.js"></script>
+  <script src="../fxos-button.js"></script>
   <style type="text/css">
     body {
       padding-top: 48px;
-      background-color: var(--background);
     }
 
     html[dir="ltr"] [data-icon=forward-light]:before {
@@ -32,28 +26,28 @@
     }
   </style>
 </head>
-<body role="application" class="l-align-center">
+<body role="application">
   <section>
-    <gaia-button id="button-0">Gaia button 1</gaia-button>
-    <gaia-button id="button-1" disabled>Gaia button 2</gaia-button>
+    <fxos-button id="button-0">fxos button 1</fxos-button>
+    <fxos-button id="button-1" disabled>fxos button 2</fxos-button>
   </section>
 
   <hr/>
 
   <section>
-    <gaia-button id="button-2"><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></gaia-button>
-    <gaia-button id="button-3"><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></gaia-button>
+    <fxos-button id="button-2"><i data-icon="back-light" aria-hidden="true"></i><span>Back</span></fxos-button>
+    <fxos-button id="button-3"><span>Forward</span><i data-icon="forward-light" aria-hidden="true"></i></fxos-button>
   </section>
 
   <hr/>
 
   <section flex>
-    <gaia-button circular id="button-4"><i data-icon="camera" aria-hidden="true"></i></gaia-button>
-    <gaia-button circular id="button-5"><i data-icon="bug" aria-hidden="true"></i></gaia-button>
-    <gaia-button circular id="button-6" disabled><i data-icon="video" aria-hidden="true"></i></gaia-button>
-    <gaia-button circular id="button-7"><i data-icon="camera" aria-hidden="true"></i></gaia-button>
-    <gaia-button circular id="button-8" disabled><i data-icon="reload" aria-hidden="true"></i></gaia-button>
-    <gaia-button circular id="button-9"><i data-icon="airplane" aria-hidden="true"></i></gaia-button>
+    <fxos-button circular id="button-4"><i data-icon="camera" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular id="button-5"><i data-icon="bug" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular id="button-6" disabled><i data-icon="video" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular id="button-7"><i data-icon="camera" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular id="button-8" disabled><i data-icon="reload" aria-hidden="true"></i></fxos-button>
+    <fxos-button circular id="button-9"><i data-icon="airplane" aria-hidden="true"></i></fxos-button>
   </section>
 </body>
 </html>

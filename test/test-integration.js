@@ -5,7 +5,7 @@
 var assert = require('chai').assert;
 marionette.plugin('helper', require('marionette-helper'));
 
-marionette('gaia-button', function() {
+marionette('fxos-button', function() {
   var client = marionette.client({
     profile: {
       prefs: {
@@ -71,7 +71,7 @@ marionette('gaia-button', function() {
     });
   });
 
-  test('gaia-buttons are present, have a correct state and are visible to ' +
+  test('fxos-buttons are present, have a correct state and are visible to ' +
     'the assistive technology', function() {
       components.forEach(function(aComponent) {
         // Element is found
@@ -79,7 +79,7 @@ marionette('gaia-button', function() {
         // Element is visible to all (inlcuding assistive technology)
         failOnA11yError(function() {
           assert.isTrue(aComponent.element.displayed());
-        }, 'gaia-button element should be visible both normally and to ' +
+        }, 'fxos-button element should be visible both normally and to ' +
           'assistive technology.');
         // NOTE: selenium checks for isEnabled does not support custom elements
         // and will always return true.
@@ -92,7 +92,7 @@ marionette('gaia-button', function() {
       });
   });
 
-  test('gaia-button is accessible (no error thrown when clicking and tapping)',
+  test('fxos-button is accessible (no error thrown when clicking and tapping)',
     function() {
       ['click', 'tap'].forEach(function(action) {
         components.forEach(function(aComponent) {
@@ -107,14 +107,14 @@ marionette('gaia-button', function() {
           if (aComponent.enabled) {
             failOnA11yError(function() {
               aComponent.element[action]();
-            }, 'gaia-button should be clickable and tappable including via ' +
+            }, 'fxos-button should be clickable and tappable including via ' +
               'the assistive technology.');
           } else {
             try {
               aComponent.element[action]();
             } catch (err) {
               assert.equal(err.type, 'ElementNotAccessibleError', 'disabled ' +
-                'gaia-button is not clickable or tappable and clicking/' +
+                'fxos-button is not clickable or tappable and clicking/' +
                 'tapping will result in an ElementNotAccessibleError.');
             }
           }
